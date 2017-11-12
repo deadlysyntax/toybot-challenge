@@ -4,6 +4,7 @@
   "description": "toybot coding challenge",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/deadlysyntax/toybot-test/issues"
   },
-  "homepage": "https://github.com/deadlysyntax/toybot-test#readme"
+  "homepage": "https://github.com/deadlysyntax/toybot-test#readme",
+  "dependencies": {
+    "inquirer": "^4.0.0"
+  }
 }
