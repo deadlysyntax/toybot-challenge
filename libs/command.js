@@ -21,8 +21,14 @@ module.exports.command = {
         return commandObject
     },
 
+    // the commandObject.command contains a string name which needs to match
+    // one of the functions in this library
+    valid: (commandObject) => {
+        return typeof this.command[commandObject.command] === 'function'
+    },
 
-
+    // These functions calculate the command input on the current board
+    // and return a new board object based
     place: () => {
         return 'place'
     },
