@@ -1,0 +1,19 @@
+{
+  "name": "toybot-test",
+  "version": "1.0.0",
+  "description": "toybot coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/deadlysyntax/toybot-test.git"
+  },
+  "author": "Jaap Nieuwland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deadlysyntax/toybot-test/issues"
+  },
+  "homepage": "https://github.com/deadlysyntax/toybot-test#readme"
+}
