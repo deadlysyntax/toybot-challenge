@@ -7,7 +7,7 @@ let init = async () => {
 }
 
 
-let awaitNextCommand = async () => {
+let nextCommand = async () => {
     let prompt = await inquirer.prompt([{ type: 'input', message: 'Using PLACE X,Y,(N,S,E,W) - specify where you\'d like to start:', name: 'placement'}])
     return tools.interpretCommand(prompt.placement)
 }
