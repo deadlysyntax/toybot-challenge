@@ -1,4 +1,4 @@
-const commands = require('./commands.js')
+const commands = require('./commands')
 
 module.exports.board = {
 

@@ -1,5 +1,6 @@
-const inquirer    = require('inquirer')
-const tools       = require('./libs/tools')
+const inquirer     = require('inquirer')
+const command      = require('./libs/command')
+const environment  = require('./libs/board') 
 
 let init = async () => {
     
