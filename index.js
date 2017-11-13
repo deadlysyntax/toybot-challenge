@@ -1,5 +1,5 @@
 const inquirer    = require('inquirer')
-const command     = require('./libs/command')
+const command     = require('./libs/command').command
 const board       = require('./libs/board') 
 
 

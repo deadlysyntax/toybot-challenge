@@ -1,4 +1,4 @@
-module.exports = {
+module.exports.command = {
 
     // Converts a command string into a command Object that our app can use to decided what to do
     // Which tidies things up input

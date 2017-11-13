@@ -1,5 +1,5 @@
 const assert   = require('chai').assert
-const command  = require('../libs/command')
+const command  = require('../libs/command').command
 
 
 describe('Commands', function() {
@@ -25,6 +25,14 @@ describe('Commands', function() {
 
     it('should not create meta data for other commands', function() {
       assert.deepEqual(command.interpret('MOVE'), {command: 'move'})
+    })
+
+    it('should return true for a valid command', function(){
+      assert.isTrue( command.valid({command: 'place', 'meta': {x: 2, y: 2, d: 'w'}}))
+    })
+
+    it('should return false for an invalid command', function(){
+        assert.isFalse( command.valid({command: 'not a command'}))
     })
 
   })
