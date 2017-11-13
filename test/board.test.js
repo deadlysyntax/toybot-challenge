@@ -73,10 +73,10 @@ describe('Board', function() {
                      initialized: true,
                      currentPosition: {
                         x: 2,
-                         y: 4,
-                         d: 'w'
-                     }
-                 })
+                        y: 4,
+                        d: 'w'
+                    }
+                })
             })
         })
 
@@ -93,14 +93,14 @@ describe('Board', function() {
                  response: 'error',
                  message:  'Please make sure you specify a position and direction',
                  board:    Object.assign({}, board, {
-                     initialized: false,
-                     currentPosition: {
-                         x: null,
-                         y: null,
-                         d: null
-                     }
-                 })
-             })
+                    initialized: false,
+                    currentPosition: {
+                        x: null,
+                        y: null,
+                        d: null
+                    }
+                })
+            })
         })
 
 
@@ -117,15 +117,67 @@ describe('Board', function() {
                  response: 'error',
                  message:  `Invalid position - axis need to be 0-${board.size-1}, please try again`,
                  board:    Object.assign({}, board, {
-                     initialized: false,
-                     currentPosition: {
-                         x: null,
-                         y: null,
-                         d: null
-                     }
-                 })
-             })
+                    initialized: false,
+                    currentPosition: {
+                        x: null,
+                        y: null,
+                        d: null
+                    }
+                })
+            })
         })
+
+
+
+
+        it('should move bot 1 place in the direction it is facing', function(){
+            assert.deepEqual(board.move({command: 'move'}, Object.assign({}, board, {
+              initialized: true,
+              currentPosition: {
+                x: 2,
+                y: 2,
+                d: 'e'
+              }
+            })), {
+                 response: 'success',
+                 board:    Object.assign({}, board, {
+                     initialized: true,
+                     currentPosition: {
+                         x: 3,
+                         y: 2,
+                         d: 'e'
+                    }
+                })
+            })
+        })
+ 
+ 
+
+ 
+ 
+        it('should not move the bot off the table', function(){
+            assert.deepEqual(board.move({command: 'move'}, Object.assign({}, board, {
+            initialized: true,
+            currentPosition: {
+                x: 0,
+                y: 2,
+                d: 'w'
+            }
+            })), {
+                response: 'error',
+                message:  'Invalid position, please try again',
+                board:    Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 0,
+                        y: 2,
+                        d: 'w'
+                    }
+                })
+            })
+        })
+ 
+ 
 
 
 
