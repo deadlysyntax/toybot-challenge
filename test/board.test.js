@@ -81,6 +81,53 @@ describe('Board', function() {
         })
 
 
+        it('should not place the bot without meta', function(){
+            assert.deepEqual( command.place({command: 'place' }, Object.assign({}, board, {
+                initialized: false,
+                currentPosition: {
+                    x: null,
+                    y: null,
+                    d: null
+                }
+            })), {
+                 response: 'error',
+                 message:  'Please make sure you specify a position and direction',
+                 board:    Object.assign({}, board, {
+                     initialized: false,
+                     currentPosition: {
+                         x: null,
+                         y: null,
+                         d: null
+                     }
+                 })
+             })
+        })
+
+
+
+        it('should not place robot off the grid', function(){
+            assert.deepEqual( command.place({command: 'place', meta: { x: 5, y: 6, d: 'e' } }, Object.assign({}, board, {
+                initialized: false,
+                currentPosition: {
+                    x: null,
+                    y: null,
+                    d: null
+                }
+            })), {
+                 response: 'error',
+                 message:  `Invalid position - axis need to be 0-${board.size-1}, please try again`,
+                 board:    Object.assign({}, board, {
+                     initialized: false,
+                     currentPosition: {
+                         x: null,
+                         y: null,
+                         d: null
+                     }
+                 })
+             })
+        })
+
+
 
     })
 

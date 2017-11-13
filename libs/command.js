@@ -51,14 +51,35 @@ module.exports.command = {
 
 
     move: () => {
-        return 'move'
+        // Calculate what the new position would be
+        let newPosition = board.position.move(board.currentPosition)
+        // Check for validity
+        if( ! board.validPosition(newPosition) )
+            return { response: 'error', 'message': 'Invalid position, please try again', board: board }
+        // Make the movement
+        let newBoard = Object.assign({}, board, {
+            currentPosition: newPosition 
+        })
+        return { response: 'success', board: newBoard }
     },
+
+
+
+
     left: () => {
         return 'left'
     },
+
+
+
+
     right: () => {
         return 'right'
     },
+
+
+
+    
     report: () => {
         return 'report'
     }
