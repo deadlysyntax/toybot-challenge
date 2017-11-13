@@ -1,5 +1,5 @@
 const inquirer     = require('inquirer')
-const command      = require('./libs/command').command
+const command      = require('./libs/command')
 const environment  = require('./libs/board') 
 
 
@@ -19,8 +19,13 @@ let init = async () => {
 
 
 let nextCommand = async (board) => {
-    let prompt = await inquirer.prompt([{ type: 'input', message: 'Using PLACE X,Y,(N,S,E,W) - specify where you\'d like to start:', name: 'placement'}])
-    return command.interpret(prompt.placement)
+    let prompt = await (() => {
+        if( board.initialized === false )
+            return inquirer.prompt([{ type: 'input', message: 'Using PLACE X,Y,(N,S,E,W) - specify where you\'d like to start:', name: 'move'}])
+        else
+            return inquirer.prompt([{ type: 'input', message: 'Specify next move - PLACE X,Y,D, MOVE, LEFT, RIGHT, REPORT', name: 'move'}])
+    })()
+    return tools.interpretCommand(prompt.move)
 }
 
 
