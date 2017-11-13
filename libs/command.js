@@ -96,7 +96,7 @@ module.exports.command = {
 
 
 
-    report: () => {
+    report: (commandObject, board) => {
         console.log('Current Position: ', board.currentPosition)
         return { response: 'success', board: board }
     }

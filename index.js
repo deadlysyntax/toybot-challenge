@@ -48,7 +48,11 @@ const runCommand = async (commandObject, board) => {
     // which returns a response object with either and error or 
     // a new board object
     let newBoardState = command[commandObject.command](commandObject, board)
-    console.log(newBoardState)
+    if( newBoardState.response === 'error' )
+        console.log(newBoardState.message)
+    // Move on to the next command
+    let newCommandObject = await nextCommand(newBoardState.board)
+    processCommand(newCommandObject, newBoardState.board)
 }
 
 
