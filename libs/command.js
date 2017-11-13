@@ -28,9 +28,28 @@ module.exports.command = {
 
     // These functions calculate the command input against the provided board
     // and return a response object containing an error or a new board object
-    place: () => {
-        return 'place'
+    
+    
+    
+    place: (commandObject, board) => {
+        if( typeof commandObject.meta === 'undefined' )
+            return { response: 'error', 'message': 'Please make sure you specify a position and direction', board: board }
+        // Check position for validity
+        if( ! board.validPosition(commandObject.meta) )
+            return { response: 'error', 'message': `Invalid position - axis need to be 0-${board.size-1}, please try again`, board: board }
+        // Check direction for validity
+        if( ! board.validDirection(commandObject.meta) )
+            return { response: 'error', 'message': 'Invalid direction, please try again with one of n,s,e,w', board: board }
+        // Make the placement
+        let newBoard = Object.assign({}, board, {
+            initialized:     true,
+            currentPosition: commandObject.meta
+        })
+        return { response: 'success', board: newBoard }
     },
+
+
+
     move: () => {
         return 'move'
     },

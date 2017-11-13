@@ -1,5 +1,6 @@
-const assert = require('chai').assert
-const board  = require('../libs/board').board
+const assert   = require('chai').assert
+const board    = require('../libs/board').board
+const command  = require('../libs/command').command
 
 
 
@@ -56,6 +57,33 @@ describe('Board', function() {
         assert.isFalse( board.validDirection({d: 'a'}))
         assert.isFalse( board.validDirection({d: 'v'}))
     })
+
   })
+
+
+
+  describe('Movement', function(){
+    
+    
+    
+        it('should place robot at specified coordinate', function(){
+            assert.deepEqual( command.place({command: 'place', meta: { x: 2, y: 4, d: 'w'} }, board), {
+                 response: 'success',
+                 board:    Object.assign({}, board, {
+                     initialized: true,
+                     currentPosition: {
+                        x: 2,
+                         y: 4,
+                         d: 'w'
+                     }
+                 })
+            })
+        })
+
+
+
+    })
+
+
 
 })
