@@ -22,5 +22,5 @@ module.exports = {
     },
     validDirection: (position) => {
         return ['n','s','e','w'].indexOf(position.d.toLowerCase()) > -1
-    },
+    }
 }
