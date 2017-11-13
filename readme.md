@@ -4,7 +4,7 @@ Requires Node 7.6+ (uses async/await)
 ```
 git clone git@github.com:deadlysyntax/toybot-test.git
 
-cd toybot
+cd toybot-test
 
 npm install
 
