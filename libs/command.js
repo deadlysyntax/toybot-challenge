@@ -66,8 +66,16 @@ module.exports.command = {
 
 
 
-    left: () => {
-        return 'left'
+    left: (commandObject, board) => {
+        let newPosition = board.position.turn(board.currentPosition, 'left')
+        // Check validity
+        if( ! board.validDirection(newPosition) )
+            return { response: 'error', 'message': 'Invalid direction, please try again with one of n,s,e,w', board: board }
+        // Make the movement
+        let newBoard = Object.assign({}, board, {
+            currentPosition: newPosition 
+        })
+        return { response: 'success', board: newBoard }
     },
 
 

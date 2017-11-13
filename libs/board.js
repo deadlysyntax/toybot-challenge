@@ -18,6 +18,12 @@ module.exports.board = {
             return Object.assign({}, from, {
                 [matrix.axis]: parseInt(from[matrix.axis]) + parseInt(matrix.traj)
             })
+        },
+        turn: ( from, turnDirection ) => {
+            let matrix = this.board.position.directionMatrix[from.d]
+            return Object.assign({}, from, {
+                d: matrix.turns[turnDirection]
+            })
         }
     },
     validPosition: (position) => {

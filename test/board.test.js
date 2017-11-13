@@ -202,6 +202,55 @@ describe('Board', function() {
         })
 
 
+        it('should turn bot left', function(){
+            assert.deepEqual(
+                command.left({command: 'left'}, Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 0,
+                        y: 2,
+                        d: 'w'
+                    }
+              })),
+              {
+                 response: 'success',
+                 board:    Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 0,
+                        y: 2,
+                        d: 's'
+                    }
+                })
+            })
+        })
+
+
+
+        it('should turn bot right', function(){
+            assert.deepEqual(
+                command.right({command: 'right'}, Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 0,
+                        y: 2,
+                        d: 'w'
+                    }
+              })),
+              {
+                 response: 'success',
+                 board:    Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 0,
+                        y: 2,
+                        d: 'n'
+                    }
+                })
+            })
+        })
+
+
 
     })
 
