@@ -1,4 +1,3 @@
-
 module.exports.command = {
 
     // Converts a command string into a command Object that our app can use to decided what to do
@@ -27,8 +26,8 @@ module.exports.command = {
         return typeof this.command[commandObject.command] === 'function'
     },
 
-    // These functions calculate the command input on the current board
-    // and return a new board object based
+    // These functions calculate the command input against the provided board
+    // and return a response object containing an error or a new board object
     place: () => {
         return 'place'
     },
