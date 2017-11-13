@@ -178,6 +178,28 @@ describe('Board', function() {
         })
  
  
+        it('should re-place bot if new place command is given', function(){
+            assert.deepEqual(
+                board.place({command: 'place', meta: {x: 4, y: 4, d: 's'}}, Object.assign({}, board, {
+                  initialized: true,
+                  currentPosition: {
+                    x: 0,
+                    y: 2,
+                    d: 'w'
+                  }
+            })),
+            {
+                response: 'success',
+                board:    Object.assign({}, board, {
+                    initialized: true,
+                    currentPosition: {
+                        x: 4,
+                        y: 4,
+                        d: 's'
+                    }
+                })
+            })
+        })
 
 
 
