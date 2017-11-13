@@ -1,11 +1,10 @@
-const inquirer     = require('inquirer')
-const command      = require('./libs/command')
-const environment  = require('./libs/board') 
+const inquirer    = require('inquirer')
+const command     = require('./libs/command')
+const board       = require('./libs/board') 
 
 
 
 const init = async () => {
-    let board         = environment.board
     try {
         let commandObject = await nextCommand(board)
         processCommand(commandObject, board)
