@@ -50,7 +50,7 @@ module.exports.command = {
 
 
 
-    move: () => {
+    move: (commandObject, board) => {
         // Calculate what the new position would be
         let newPosition = board.position.move(board.currentPosition)
         // Check for validity

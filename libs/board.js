@@ -12,6 +12,12 @@ module.exports.board = {
             s: { axis: 'y', traj: -1, turns: { left: 'e', right: 'w'} },
             e: { axis: 'x', traj: 1,  turns: { left: 'n', right: 's'} },
             w: { axis: 'x', traj: -1, turns: { left: 's', right: 'n'} }
+        },
+        move: ( from ) => {
+            let matrix = this.board.position.directionMatrix[from.d]
+            return Object.assign({}, from, {
+                [matrix.axis]: parseInt(from[matrix.axis]) + parseInt(matrix.traj)
+            })
         }
     },
     validPosition: (position) => {

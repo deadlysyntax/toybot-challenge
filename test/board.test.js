@@ -131,7 +131,7 @@ describe('Board', function() {
 
 
         it('should move bot 1 place in the direction it is facing', function(){
-            assert.deepEqual(board.move({command: 'move'}, Object.assign({}, board, {
+            assert.deepEqual(command.move({command: 'move'}, Object.assign({}, board, {
               initialized: true,
               currentPosition: {
                 x: 2,
@@ -156,7 +156,7 @@ describe('Board', function() {
  
  
         it('should not move the bot off the table', function(){
-            assert.deepEqual(board.move({command: 'move'}, Object.assign({}, board, {
+            assert.deepEqual(command.move({command: 'move'}, Object.assign({}, board, {
             initialized: true,
             currentPosition: {
                 x: 0,
@@ -180,7 +180,7 @@ describe('Board', function() {
  
         it('should re-place bot if new place command is given', function(){
             assert.deepEqual(
-                board.place({command: 'place', meta: {x: 4, y: 4, d: 's'}}, Object.assign({}, board, {
+                command.place({command: 'place', meta: {x: 4, y: 4, d: 's'}}, Object.assign({}, board, {
                   initialized: true,
                   currentPosition: {
                     x: 0,
