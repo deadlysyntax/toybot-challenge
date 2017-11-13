@@ -1,4 +1,4 @@
-module.exports = {
+module.exports.board = {
     initialized: false,
     size: 5,
     currentPosition: {

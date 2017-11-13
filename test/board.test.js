@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const board  = require('../libs/board')
+const board  = require('../libs/board').board
 
 
 
@@ -24,8 +24,38 @@ describe('Board', function() {
         assert.equal(board.size, 5)
     })
 
-    
+  })
 
+
+
+  describe('Validation checks', function() {
+
+    it('should return true if a position is valid', function(){
+        assert.isTrue( board.validPosition({x: 0, y: 0, d: 'w'}))
+        assert.isTrue( board.validPosition({x: 3, y: 3, d: 'n'}))
+        assert.isTrue( board.validPosition({x: 4, y: 4, d: 's'}))
+    })
+
+
+    it('should return false if a position is valid', function(){
+        assert.isFalse( board.validPosition({x: -1, y: -1, d: 'w'}))
+        assert.isFalse( board.validPosition({x: 5, y: 5, d: 'n'}))
+        assert.isFalse( board.validPosition({x: 7, y: 7, d: 's'}))
+    })
+
+
+    it('should return true is the specified direction is valid', function(){
+        assert.isTrue( board.validDirection({d: 'n'}))
+        assert.isTrue( board.validDirection({d: 's'}))
+        assert.isTrue( board.validDirection({d: 'e'}))
+        assert.isTrue( board.validDirection({d: 'w'}))
+    })
+
+    it('should return false is the specified direction is invalid', function(){
+        assert.isFalse( board.validDirection({d: 'q'}))
+        assert.isFalse( board.validDirection({d: 'a'}))
+        assert.isFalse( board.validDirection({d: 'v'}))
+    })
   })
 
 })
